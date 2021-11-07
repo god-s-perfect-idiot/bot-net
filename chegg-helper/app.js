@@ -3,8 +3,6 @@ const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-const sender = require('./mailer.js');
-void 0;
 (async () => {
   const browser = await puppeteer.launch({
     //   headless: false
@@ -38,7 +36,8 @@ void 0;
     }
     else {
         console.log('Question found. Locking.')
-        sender('chegg-bot-python');
+        //figure this logic out
+        // sender('chegg-bot-python');
         await page.click('#root > main > footer > div > div > div:nth-child(1) > button > span > span.sc-1eq90u-1.fiQEjm')
         await wait(7200000);
     }

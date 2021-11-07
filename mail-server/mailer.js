@@ -1,21 +1,15 @@
-// include nodemailer
 const nodemailer = require('nodemailer');
-// declare vars
-let fromMail = 'backd00r257@gmail.com';
-let toMail = 'backd00r257@gmail.com';
-
-// let toMail = 'gnbaviskar2@gmail.com,gnbaviskar3@gmail.com';
+const {fromMail, toMail, password} = require('./settings.json');
 
 
-module.exports = function sender(subject) {
-    let text = "";
+module.exports = function sender(subject, text) {
 
     // auth
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'backd00r257@gmail.com',
-            pass: 'portorico'
+            user: fromMail,
+            pass: password
         }
     });
 
@@ -32,6 +26,6 @@ module.exports = function sender(subject) {
         if (error) {
             console.log(error);
         }
-        console.log(response)
+        console.log('Email sent!')
     });
 }
